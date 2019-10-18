@@ -1,6 +1,8 @@
 # python
 __pycache__
-
+dist
+build
+*.egg-info
 
 # virtualenv
 /env/

@@ -1,0 +1,35 @@
+from setuptools import setup, find_namespace_packages
+
+setup(
+    name="shadertoy",
+    version="0.1.0",
+    author="Einar Forselv",
+    author_email="eforselv@gmail.com",
+    url="https://github.com/einarf/shadertoy",
+    description="A python implementation of shadertoy using moderngl",
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    license='BSD',
+    packages=find_namespace_packages(include=['shadertoy', 'shadertoy.*']),
+    python_requires='>=3.5',
+    install_requires=[
+        'moderngl<6',
+    ],
+    classifiers=[
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: BSD License',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: POSIX :: Linux',
+        'Natural Language :: English',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Topic :: Multimedia :: Graphics',
+        'Topic :: Multimedia :: Graphics :: 3D Rendering',
+        'Topic :: Scientific/Engineering :: Visualization',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ],
+)
