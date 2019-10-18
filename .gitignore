@@ -1,0 +1,12 @@
+# python
+__pycache__
+
+
+# virtualenv
+/env/
+/.venv/
+/.venv38/
+
+# IDEa
+.vscode
+.idea
