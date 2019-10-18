@@ -14,6 +14,7 @@ resources.register_dir(
 class ShaderToyWindow(moderngl_window.WindowConfig):
     title = "Python Shadertoy"
     resource_dir = Path(__file__).parent
+    # Don't enforce a specific aspect ratio
     aspect_ratio = None
 
     def __init__(self, *args, **kwargs):
@@ -22,7 +23,9 @@ class ShaderToyWindow(moderngl_window.WindowConfig):
         self.main_program_path = Path('test.glsl').resolve()
         self.main_program = None
         self.load_main_program()
+
         self.quad_fs = geometry.quad_fs()
+
         self.fallback_program = self.load_program('shadertoy/programs/fallback.glsl')
         self.error_state = False
         self.mouse_pos = 0, 0
@@ -38,12 +41,15 @@ class ShaderToyWindow(moderngl_window.WindowConfig):
             self.quad_fs.render(self.fallback_program)
             return
 
+        # Set standard shadertoy uniforrms
         self.set_uniform('iTime', time)
         self.set_uniform('iMouse', self.mouse_pos)
         self.set_uniform(
             'iResolution',
             (self.wnd.buffer_size[0], self.wnd.buffer_size[1]),
         )
+
+        # Run the program
         self.quad_fs.render(self.main_program)
 
     def set_uniform(self, name, value):
@@ -56,7 +62,12 @@ class ShaderToyWindow(moderngl_window.WindowConfig):
             pass
 
     def check_reload(self, force=False):
+        """Check if the file has changed"""
+
+        # FIXME: While this works fairly well on all platforms
+        #        it's overkill to stat the file every frame.
         mtime = self.main_program_path.stat().st_mtime
+
         if self.main_program_mtime < mtime:
             print("Reloading program...")
             self.main_program_mtime = mtime
