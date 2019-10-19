@@ -4,6 +4,7 @@ from shadertoy import ShaderToyWindow
 
 class Project(ShaderToyWindow):
     resource_dir = Path(__file__).parent.resolve()
+    main_program = None
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
