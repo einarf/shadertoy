@@ -92,5 +92,5 @@ class ShaderToyWindow(moderngl_window.WindowConfig):
     def key_event(self, key, action, modifiers):
         keys = self.wnd.keys
 
-    def mouse_drag_event(self, x, y):
+    def mouse_drag_event(self, x, y, dx, dy):
         self._mouse_pos = x, y

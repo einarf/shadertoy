@@ -13,7 +13,7 @@ setup(
     packages=find_namespace_packages(include=['shadertoy', 'shadertoy.*']),
     python_requires='>=3.5',
     install_requires=[
-        'moderngl_window<2',
+        'moderngl-window<2',
     ],
     classifiers=[
         'Intended Audience :: Developers',
